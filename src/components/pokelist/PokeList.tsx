@@ -7,8 +7,8 @@ import "./PokeList.css";
 //Define State´s Data-Types For PokeList Component
 interface PokeListState {
   pokemons: any[];
-  pokemonDetails: any[];
-  pokemonDetail: any;
+  pokemonsDetails: any[];
+  singlePokeDetails: any;
   offset: number;
 }
 const loadNumber = 12;
@@ -17,8 +17,8 @@ export default class PokeList extends Component {
   //Create State For PokeList Component
   state: PokeListState = {
     pokemons: [],
-    pokemonDetails: [],
-    pokemonDetail: null,
+    pokemonsDetails: [],
+    singlePokeDetails: null,
     offset: 0,
   };
 
@@ -30,7 +30,7 @@ export default class PokeList extends Component {
     return this.state.offset + loadNumber;
   };
 
-  // Create GetMore Function to Increase The Offset With Every Call
+  // Increase The Offset With Every Call
   getMorePokemons = () => {
     const newOffset = this.getNextOffset();
     this.setState({ offset: newOffset }, () => {
@@ -39,18 +39,18 @@ export default class PokeList extends Component {
   };
 
   getAllPokemon = () => {
-    this.setState({ pokemonDetail: null });
+    this.setState({ singlePokeDetails: null });
   };
 
-  //Fetching Single Pokemon Data With ID
-  getPokemon = (id: string) => {
-    const pokemonDetail = this.state.pokemonDetails.filter(
+  //Show Single Pokemon Data By ID
+  getSinglePokemon = (id: string) => {
+    const singlePokeDetails = this.state.pokemonsDetails.filter(
       (item) => item.id === id
     );
-    if (pokemonDetail.length > 0) {
-      this.setState({ pokemonDetail: pokemonDetail[0] });
+    if (singlePokeDetails.length > 0) {
+      this.setState({ singlePokeDetails: singlePokeDetails[0] });
     } else {
-      this.setState({ pokemonDetail: null });
+      this.setState({ singlePokeDetails: null });
     }
   };
 
@@ -61,28 +61,28 @@ export default class PokeList extends Component {
     this.setState({ pokemons: data.results });
     return this.state.pokemons.map(async (pokemon) => {
       const { data }: any = await axios.get(pokemon.url);
-      const pokeArray = this.state.pokemonDetails;
+      const pokeArray = this.state.pokemonsDetails;
       pokeArray.push(data);
-      this.setState({ PokemonDetails: pokeArray });
+      this.setState({ pokemonsDetails: pokeArray });
     });
   };
 
-  //Mapping Through pokemonDetails Array To Fetch All Elements And Pass Them To Pokecard Component As A Props
+  //Mapping Through pokemonsDetails Array To Fetch All Elements And Pass Them To Pokecard Component As A Props
   renderedPokeList = () => {
-    const { pokemonDetails } = this.state;
-    return pokemonDetails.map((pokemon) => {
+    const { pokemonsDetails } = this.state;
+    return pokemonsDetails.map((pokemon) => {
       return (
         <div key={pokemon.id} className="col-12 col-md-6 col-lg-4">
-          <PokeCard pokemon={pokemon} getPokemon={this.getPokemon} />
+          <PokeCard pokemon={pokemon} getPokemon={this.getSinglePokemon} />
         </div>
       );
     });
   };
 
   render() {
-    const { pokemonDetail } = this.state;
-    if (pokemonDetail) {
-      const { name, order, types, moves, stats, abilities, id } = pokemonDetail;
+    const { singlePokeDetails } = this.state;
+    if (singlePokeDetails) {
+      const { name, order, types, moves, stats, abilities, id } = singlePokeDetails;
 
       return (
         <PokeDetails
