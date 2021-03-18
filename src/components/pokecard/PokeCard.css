@@ -1,0 +1,33 @@
+body {
+  box-sizing: border-box;
+  background: linear-gradient(
+    90deg,
+    rgba(27, 26, 26, 1) 0%,
+    rgba(12, 41, 50, 1) 39%,
+    rgba(13, 50, 65, 1) 71%
+  );
+}
+
+.card-body {
+  background: linear-gradient(
+    90deg,
+    rgba(27, 26, 26, 1) 0%,
+    rgb(46, 89, 102) 63%,
+    rgba(9, 44, 57, 1) 93%
+  );
+}
+.card {
+  border: 1px solid;
+  box-shadow: 0 0 6px rgb(37, 37, 37), 0 0 6px #fff;
+}
+
+.list-group-item {
+  background: linear-gradient(
+    90deg,
+    rgba(27, 26, 26, 1) 0%,
+    rgb(46, 89, 102) 63%,
+    rgba(9, 44, 57, 1) 93%
+  );
+  color: wheat;
+  font-family: sans-serif;
+}

@@ -1,0 +1,46 @@
+.logo {
+  height: 120px;
+  object-fit: cover;
+}
+
+.pokeName {
+  font-family: "Cormorant Unicase", serif !important;
+  font-size: 1.7rem;
+  color: wheat;
+}
+
+.pokeimage {
+  height: 150px;
+  width: 130px;
+}
+
+.img {
+  background-color: rgb(226, 218, 204);
+  transition: all 0.3s ease-in-out;
+}
+
+.img:hover {
+  background-color: rgb(231, 228, 223);
+}
+
+.card-body {
+  height: 80px !important;
+  text-align: center;
+  color: white;
+}
+
+.ball:hover {
+  transform: scale(1.1);
+}
+.ball {
+  transition: transform 0.3s ease-in;
+}
+
+.btn:focus,
+.btn:active,
+.btn {
+  outline: none !important;
+  outline-offset: -2px !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}

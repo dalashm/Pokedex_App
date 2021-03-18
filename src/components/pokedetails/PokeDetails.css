@@ -1,0 +1,20 @@
+.jumbotron {
+  color: wheat;
+  background: linear-gradient(
+    90deg,
+    rgba(27, 26, 26, 1) 0%,
+    rgb(46, 89, 102) 63%,
+    rgba(9, 44, 57, 1) 93%
+  );
+  font-family: "Courier New", Courier, monospace;
+  overflow: hidden;
+}
+
+.pokeDetailsImg {
+  height: 200px;
+  width: 200px;
+}
+.info {
+  margin-bottom: 20px;
+  line-height: 35px;
+}
